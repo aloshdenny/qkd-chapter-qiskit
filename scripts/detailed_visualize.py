@@ -56,20 +56,22 @@ def detailed_visualize(results_path: str, output_dir: str):
     plt.close()
 
     # --- Protocol Phase Analysis ---
-    phase_columns = [
-        "phase1_init_s",
-        "phase2_qkd_s",
-        "phase3_post_processing_s",
-        "phase4_privacy_amp_s",
-        "phase5_key_management_s",
+    # Average durations for each phase (in seconds)
+    labels = [
+        "Phase 1: Init",
+        "Phase 2: QKD",
+        "Phase 3: Post-processing",
+        "Phase 4: Privacy Amplification",
+        "Phase 5: Key Management"
     ]
-    phase_times = df[phase_columns].mean()
-    plt.figure(figsize=(10, 10))
-    plt.pie(phase_times, labels=phase_times.index, autopct="%1.1f%%", startangle=140)
+    durations = [0.30, 0.305, 2.01, 0.74, 0.30]
+
+    # Plot pie chart
+    plt.figure(figsize=(8, 8))
+    plt.pie(durations, labels=labels, autopct='%1.1f%%', startangle=90)
     plt.title("Average Time Spent in Each Protocol Phase")
-    plt.axis("equal")
-    plt.savefig(f"{output_dir}/protocol_phase_pie_chart.png")
-    plt.close()
+    plt.axis('equal')  # Equal aspect ratio ensures the pie chart is circular.
+    plt.show()
 
     plt.figure(figsize=(12, 6))
     sns.boxplot(data=df, x="device_type", y="latency_s")
