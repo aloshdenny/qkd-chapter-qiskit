@@ -1,0 +1,15 @@
+{
+    "device_configs": [
+        {"name": "Low-end", "cpu": 50, "ram": 32, "flash": 128, "power": 20},
+        {"name": "Mid-range", "cpu": 80, "ram": 64, "flash": 256, "power": 35},
+        {"name": "High-end", "cpu": 120, "ram": 128, "flash": 512, "power": 50}
+    ],
+    "block_sizes": [256, 512, 1024, 2048],
+    "error_corrections": ["parity", "bch", "ldpc"],
+    "attack_scenarios": [
+        {"type": "none", "strength": 0.0},
+        {"type": "intercept_resend", "strength": 0.3},
+        {"type": "intercept_resend", "strength": 0.7},
+        {"type": "photon_splitting", "strength": 0.5}
+    ]
+}
